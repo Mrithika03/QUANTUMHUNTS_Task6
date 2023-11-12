@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://vjs.zencdn.net/7.14.3/video-js.css" rel="stylesheet">
+    <script src="https://vjs.zencdn.net/7.14.3/video.js"></script>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        #video-container {
+            max-width: 800px; /* Adjust the maximum width as needed */
+            width: 100%;
+        }
+    </style>
+    <title>Video.js Merged Video</title>
+</head>
+<body>
+
+    <video
+        id="my-video"
+        class="video-js"
+        controls
+        preload="auto"
+        width="640"
+        height="264"
+        data-setup="{}"
+    >
+        <source src="file1.mp4" type="video/mp4">
+        <p class="vjs-no-js">
+            To view this video please enable JavaScript, and consider upgrading to a web browser that
+            <a href="https://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+    </video>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var player = videojs('my-video');
+
+            // Event listener for 'ended' event
+            player.on('ended', function () {
+                // Switch to the second video when the first one ends
+                player.src('file2.mp4');
+                player.play();
+            });
+        });
+    </script>
+
+</body>
+</html>
